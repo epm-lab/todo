@@ -1,4 +1,8 @@
 .todo-list-item {
-    margin: 0;
-    padding: 0;
+    list-style-type: none;
+}
+
+.checkbox {
+    padding-right: 0.6em;
+    font-size: 120%;
 }
