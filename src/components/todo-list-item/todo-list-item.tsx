@@ -1,13 +1,18 @@
 import React from 'react';
 
 import "antd/dist/antd.css";
-import { Checkbox } from "antd";
+import { Checkbox, Button } from "antd";
 import './todo-list-item.css';
 
 const TodoListItem = ({id = 0, text = '', isCompleted = false}:TodoListItemTypes) => (
   <li className="todo-list-item">
-    <Checkbox onClick={() => console.log(`click ${id}`)} className="checkbox"/>
-    <span className={isCompleted ? 'completed text' : 'text'}>{text}</span>
+    <span>
+      <Checkbox onClick={() => console.log(`click ${id}`)} className="checkbox"/>
+      <span className={isCompleted ? 'completed text' : 'text'}>{text}</span>
+    </span> 
+    <Button onClick={() => console.log(`delete ${id}`)} danger size="small">
+      Delete
+    </Button>
   </li>
 );
 

@@ -3,6 +3,19 @@
   margin: 10px;
 }
 
+@media screen and (max-width: 900px) {
+  .main-input {
+    width: 70%;
+  };
+}
+
+@media screen and (max-width: 475px) {
+  .main-input {
+    width: 90%;
+  };
+}
+
+
 .form {
   display: flex;
   justify-content: center;
