@@ -1,6 +1,6 @@
 import React from "react";
 import { AppHeader } from "./components/app-header/appHeader";
-import { ToDo } from "./containers/todo/todo";
+import ToDo from "./containers/todo/todo";
 
 import "./App.css";
 
