@@ -32,20 +32,17 @@ function ToDo(props: InjectedFormProps): ReactElement {
     switch (activeFilter) {
       case COMPLETED:
         return tasks.filter((task) => task.isCompleted);
-        break;
       case ACTIVE:
         return tasks.filter((task) => !task.isCompleted);
-        break;
       default:
         return tasks;
     }
   };
 
   const filteredTasks = filterTasks(tasks, filter);
-
   return (
     <>
-      <AppHeader amountOfTasks={tasks.length} />
+      <AppHeader amountOfTasks={tasks.length} activeFilter={filter} />
       <form className="form" onSubmit={handleSubmit(handleAddTask)}>
         <Field
           className="main-input"
