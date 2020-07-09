@@ -24,6 +24,7 @@ function ToDo(props: InjectedFormProps): ReactElement {
         text: taskText,
         isCompleted: false,
       };
+      values.toDoInput = "";
       dispatch(addTask(newTask));
     }
   };
