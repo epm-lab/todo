@@ -10,7 +10,7 @@ const INITIAL_TASKS: Task[] = [
   {
     id: 1,
     text: 'Learn ReactJS',
-    isCompleted: true,
+    isCompleted: false,
   },
   {
     id: 2,
