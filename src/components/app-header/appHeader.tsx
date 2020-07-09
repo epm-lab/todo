@@ -4,12 +4,12 @@ import { PageHeader, Button } from "antd";
 
 import "./appHeader.css";
 
-export const AppHeader: React.FC = () => {
+export const AppHeader = ({ amountOfTasks }: AppHeaderTypes) => {
   return (
     <PageHeader
       className="header"
       title="ToDo list"
-      subTitle="You have 0 tasks" //почитать про динамические значения
+      subTitle={`You have ${amountOfTasks} tasks`}
       extra={[
         <Button key="3">All</Button>,
         <Button key="2">Active</Button>,
@@ -18,3 +18,7 @@ export const AppHeader: React.FC = () => {
     />
   );
 };
+
+interface AppHeaderTypes {
+  amountOfTasks: number;
+}
