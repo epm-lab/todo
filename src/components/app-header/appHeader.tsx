@@ -14,7 +14,7 @@ export const AppHeader = ({ amountOfTasks, activeFilter }: AppHeaderTypes) => {
       title="ToDo list"
       subTitle={`You have ${amountOfTasks} tasks`}
       extra={[
-        <Button onClick={() => dispatch(changeFilter(ALL))} key="3">
+        <Button autoFocus onClick={() => dispatch(changeFilter(ALL))} key="3">
           All
         </Button>,
         <Button onClick={() => dispatch(changeFilter(ACTIVE))} key="2">
