@@ -4,6 +4,7 @@ import { InjectedFormProps, reduxForm, Field } from 'redux-form'
 import { RootState, Task } from '../../store/appState'
 import { addTask } from '../../store/actions'
 import { AppHeader } from '../../components/app-header/appHeader'
+import TodoList from '../../components/todo-list/todo-list';
 import 'antd/dist/antd.css'
 import './todo.css'
 
@@ -38,7 +39,7 @@ function ToDo(props: InjectedFormProps): ReactElement{
         placeholder="Enter you task here..."
       />
       {/*TODO: import TodoList component*/}
-      {/*{isTasksExist && <TodoList tasksList={tasks} />}*/}
+      {isTasksExist && <TodoList tasksList={tasks} />}
     </form>
   )
 }

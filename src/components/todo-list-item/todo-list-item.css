@@ -1,0 +1,11 @@
+.todo-list-item {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox {
+    padding-right: 0.6em;
+    font-size: 120%;
+}
