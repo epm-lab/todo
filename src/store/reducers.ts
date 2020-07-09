@@ -3,8 +3,9 @@ import { reducer as reduxFormReducer } from "redux-form"
 import * as actionTypes from './actionTypes'
 import { Task } from './appState'
 import { TaskListActionTypes, ChangeFilterType } from './actions'
+import { ALL } from './filterConstants'
 
-const BASE_FILTER: string = 'all'
+const BASE_FILTER: string = ALL;
 const INITIAL_TASKS: Task[] = [
   {
     id: 1,
