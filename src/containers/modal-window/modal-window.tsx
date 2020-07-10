@@ -49,7 +49,7 @@ const ModalWindow = ({ text, id }: ModalType ) => {
 			>
 			<Input
 				type="text"
-				defaultValue={text}
+				value={value}
 				onChange={(e: React.FormEvent<HTMLInputElement>) => {
 					setInputValue(e.currentTarget.value)
 				}}
