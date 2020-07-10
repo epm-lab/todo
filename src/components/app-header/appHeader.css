@@ -1,3 +1,8 @@
 .header {
 	border-bottom: 1px solid gray;
 }
+
+.ant-btn.active {
+	color: #40a9ff;
+	border-color: #40a9ff;
+}
