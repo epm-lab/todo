@@ -6,6 +6,7 @@ import { addTask } from "../../store/actions";
 import { AppHeader } from "../../components/app-header/appHeader";
 import { COMPLETED, ACTIVE } from "../../store/filterConstants";
 import TodoList from "../../components/todo-list/todo-list";
+import { Input } from 'antd';
 import "antd/dist/antd.css";
 import "./todo.css";
 

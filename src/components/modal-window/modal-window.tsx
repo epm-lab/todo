@@ -1,9 +1,13 @@
-import {  Modal, Button  } from 'antd';
+import {  Modal, Button, Input  } from 'antd';
 import React from "react";
 import { useState } from 'react';
 import { Field } from 'redux-form';
+
+interface ModalType {
+	text: string;
+}
  
-const ModalWindow = () => {
+const ModalWindow = ({ text }:ModalType) => {
   const [ visible, setVisible ] = useState(false);
 
   const showModal = ():void => {
@@ -20,12 +24,16 @@ const ModalWindow = () => {
 					Editing
 			</Button>
 			<Modal
-					title="Basic Modal"
+					title="Editing"
 					visible={visible}
 					onOk={closeWindow}
 					onCancel={closeWindow}
 			>
-					Editing
+				<Field 
+					name="editInput" 
+					component={()=> <input type="text" defaultValue={text}/>}
+					onChange={(e: React.FormEvent<HTMLInputElement>) => console.log(e)}
+				/>
 			</Modal>
 			</div>
 	);
