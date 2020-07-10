@@ -10,7 +10,7 @@ const TodoListItem = ({id = 0, text = '', isCompleted}:TodoListItemTypes) => {
   return (
     <li className="todo-list-item">
       <span>
-        <Checkbox id={`check-${id}`} onChange={() => dispatch(completeTask(id))} className="checkbox"/>
+        <Checkbox id={`check-${id}`} onChange={() => dispatch(completeTask(id))} checked={isCompleted ? true : false} className="checkbox"/>
         <label className="label-check" htmlFor={`check-${id}`}><span className={isCompleted ? 'done-task' : 'active-task'}>{text}</span></label>
       </span> 
       <Button onClick={() => dispatch(removeTask(id))} danger size="small">
