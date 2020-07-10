@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { changeFilter } from "./../../store/actions";
-import "antd/dist/antd.css";
 import { PageHeader, Button } from "antd";
 import { ALL, ACTIVE, COMPLETED } from "./../../store/filterConstants";
 import "./appHeader.css";
+import "antd/dist/antd.css";
 
-export const AppHeader = ({ amountOfTasks, activeFilter }: AppHeaderTypes) => {
+export const AppHeader = ({ amountOfTasks, activeBtn }: AppHeaderTypes) => {
   const dispatch = useDispatch();
   return (
     <PageHeader
@@ -14,14 +14,26 @@ export const AppHeader = ({ amountOfTasks, activeFilter }: AppHeaderTypes) => {
       title="ToDo list"
       subTitle={`You have ${amountOfTasks} tasks`}
       extra={[
-        <Button autoFocus onClick={() => dispatch(changeFilter(ALL))} key="3">
+        <Button
+          onClick={() => dispatch(changeFilter(ALL))}
+          className={ALL === activeBtn ? "active" : ""}
+          key="3"
+        >
           All
         </Button>,
-        <Button onClick={() => dispatch(changeFilter(ACTIVE))} key="2">
+        <Button
+          onClick={() => dispatch(changeFilter(ACTIVE))}
+          className={ACTIVE === activeBtn ? "active" : ""}
+          key="2"
+        >
           Active
         </Button>,
-        <Button onClick={() => dispatch(changeFilter(COMPLETED))} key="1">
-          Complited
+        <Button
+          onClick={() => dispatch(changeFilter(COMPLETED))}
+          className={COMPLETED === activeBtn ? "active" : ""}
+          key="1"
+        >
+          Completed
         </Button>,
       ]}
     />
@@ -30,5 +42,5 @@ export const AppHeader = ({ amountOfTasks, activeFilter }: AppHeaderTypes) => {
 
 interface AppHeaderTypes {
   amountOfTasks: number;
-  activeFilter: string;
+  activeBtn: string;
 }

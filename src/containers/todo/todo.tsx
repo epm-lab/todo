@@ -43,7 +43,7 @@ function ToDo(props: InjectedFormProps): ReactElement {
   const filteredTasks = filterTasks(tasks, filter);
   return (
     <>
-      <AppHeader amountOfTasks={tasks.length} activeFilter={filter} />
+      <AppHeader amountOfTasks={tasks.length} activeBtn={filter} />
       <form className="form" onSubmit={handleSubmit(handleAddTask)}>
         <Field
           className="main-input"
