@@ -18,12 +18,18 @@ export interface CompleteTaskType {
   id: number;
 }
 
+export interface ChangeTaskType {
+  type: typeof actionTypes.CHANGE_TASK;
+  id: number;
+  newText: string;
+}
+
 export interface ChangeFilterType {
   type: typeof actionTypes.CHANGE_FILTER;
   activeFilter: string;
 }
 
-export type TaskListActionTypes = AddTaskType | RemoveTaskType | CompleteTaskType
+export type TaskListActionTypes = AddTaskType | RemoveTaskType | CompleteTaskType | ChangeTaskType
 
 export const addTask = (taskData: Task): AddTaskType => ({
   type: actionTypes.ADD_TASK,
@@ -40,6 +46,12 @@ export const removeTask = (id: number): RemoveTaskType => ({
 export const completeTask = (id: number): CompleteTaskType => ({
   type: actionTypes.COMPLETE_TASK,
   id
+});
+
+export const changeTask = (id: number, newText: string): ChangeTaskType => ({
+  type: actionTypes.CHANGE_TASK,
+  id,
+  newText
 });
 
 export const changeFilter = (activeFilter: string): ChangeFilterType => ({

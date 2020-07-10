@@ -44,6 +44,13 @@ const tasks = (state = INITIAL_TASKS, action: TaskListActionTypes): Task[] => {
         }
         return task;
       });
+    case actionTypes.CHANGE_TASK:
+      return [...state].map((task) => {
+        if (task.id === action.id) {
+          task.text = action.newText
+        }
+        return task;
+      });
     default:
       return state;
   }
