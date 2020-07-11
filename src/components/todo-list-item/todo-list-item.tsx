@@ -11,7 +11,7 @@ const TodoListItem = ({id = 0, text = '', isCompleted}:TodoListItemTypes) => {
   const dispatch = useDispatch();
   return (
     <li className="todo-list-item">
-      <span>
+      <span className="todo-list-item_span">
         <Checkbox id={`check-${id}`} onChange={() => dispatch(completeTask(id))} checked={isCompleted ? true : false} className="checkbox"/>
         <label className="label-check" htmlFor={`check-${id}`}><span className={isCompleted ? 'done-task' : 'active-task'}>{text}</span></label>
         <ModalWindow text={text} id={id}/>
