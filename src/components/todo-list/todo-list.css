@@ -2,17 +2,5 @@
     margin: 0;
     padding: 0;
     font-size: 130%;
-    width: 40%;
-}
-
-@media screen and (max-width: 900px) {
-    .todo-list {
-        width: 70%;
-    }
-}
-
-@media screen and (max-width: 475px) {
-    .todo-list {
-        width: 90%;
-    }
+    width: 92%;
 }
