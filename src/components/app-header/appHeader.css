@@ -1,5 +1,6 @@
-.header {
-	border-bottom: 1px solid gray;
+.ant-page-header.header {
+	max-width: 600px;
+	margin: 0 auto;
 }
 
 .ant-btn.active {
