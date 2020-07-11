@@ -1,8 +1,11 @@
-import { Modal, Button, Input } from "antd";
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeTask } from "../../store/actions";
+import { Modal, Button, Input, Tooltip } from "antd";
+import { EditOutlined } from '@ant-design/icons';
+
+import './modal-window.css';
 
 interface ModalType {
   text: string;
@@ -37,10 +40,12 @@ const ModalWindow = ({ text, id }: ModalType) => {
   };
 
   return (
-    <div>
-      <Button type="primary" onClick={showModal}>
-        Editing
-      </Button>
+    <div className="modal">
+			<Button className="button-modal" id={`button${id}`} onClick={showModal}>
+			</Button>
+			<Tooltip title="Edit this text!" placement="right">
+				<label htmlFor={`button${id}`} className="edit-pencil">{<EditOutlined />}</label>
+			</Tooltip>	
       <Modal
         title="Editing"
         visible={visible}

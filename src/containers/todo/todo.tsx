@@ -53,7 +53,6 @@ function ToDo(props: InjectedFormProps): ReactElement {
           type="text"
           placeholder="Enter you task here..."
         />
-        {/*TODO: import TodoList component*/}
         {isTasksExist && <TodoList tasksList={filteredTasks} />}
       </form>
     </>
