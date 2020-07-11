@@ -16,7 +16,7 @@ const TodoListItem = ({id = 0, text = '', isCompleted}:TodoListItemTypes) => {
         <label className="label-check" htmlFor={`check-${id}`}><span className={isCompleted ? 'done-task' : 'active-task'}>{text}</span></label>
         <ModalWindow text={text} id={id}/>
       </span> 
-      <Button onClick={() => dispatch(removeTask(id))} danger>
+      <Button onClick={() => dispatch(removeTask(id))} size="small">
         Delete
       </Button>
     </li>

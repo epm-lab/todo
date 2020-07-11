@@ -47,7 +47,7 @@ const ModalWindow = ({ text, id }: ModalType) => {
 				<label htmlFor={`button${id}`} className="edit-pencil">{<EditOutlined />}</label>
 			</Tooltip>	
       <Modal
-        title="Editing"
+        title="Editing text"
         visible={visible}
         onOk={handleOk}
         onCancel={handleCancel}
