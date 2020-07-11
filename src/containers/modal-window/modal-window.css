@@ -1,0 +1,15 @@
+.modal .button-modal {
+    display: none;
+}
+
+.edit-pencil {
+    color: rgba(114, 112, 112, 0.425);
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    cursor: pointer;
+    transition: color 0.3s ease-in;
+}
+
+.edit-pencil:hover {
+    color: #3FA3FF;
+}

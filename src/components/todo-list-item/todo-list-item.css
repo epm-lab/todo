@@ -3,11 +3,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.7em;
+}
+
+.todo-list-item_span {
+    display: flex;
+    align-items: center;
 }
 
 .checkbox {
     padding-right: 0.6em;
-    font-size: 120%;
 }
 
 .label-check {
