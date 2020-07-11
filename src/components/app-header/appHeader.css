@@ -1,6 +1,8 @@
 .ant-page-header.header {
 	max-width: 600px;
 	margin: 0 auto;
+	background-color: white;
+	margin-top: 50px;
 }
 
 .ant-btn.active {
