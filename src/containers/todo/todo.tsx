@@ -47,11 +47,11 @@ function ToDo(props: InjectedFormProps): ReactElement {
       <AppHeader amountOfTasks={tasks.length} activeBtn={filter} />
       <form className="form" onSubmit={handleSubmit(handleAddTask)}>
         <Field
-          className="main-input"
+          className="main-input ant-input"
           name="toDoInput"
           component="input"
           type="text"
-          placeholder="Enter you task here..."
+          placeholder="Enter your new task here..."
         />
         {isTasksExist && <TodoList tasksList={filteredTasks} />}
       </form>

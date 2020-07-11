@@ -3,6 +3,7 @@
 }
 
 .edit-pencil {
+    color: rgba(114, 112, 112, 0.425);
     margin-left: 0.3em;
     margin-right: 0.3em;
     cursor: pointer;
@@ -10,5 +11,5 @@
 }
 
 .edit-pencil:hover {
-    color: #40A9FF;
+    color: #3FA3FF;
 }
