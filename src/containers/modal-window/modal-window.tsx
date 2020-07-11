@@ -30,12 +30,6 @@ const ModalWindow = ({ text, id }: ModalType) => {
     setInputValue(text);
   };
 
-  const handleEnter = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      handleOk();
-    }
-  };
-
   return (
     <div>
       <Button type="primary" onClick={showModal}>
@@ -54,9 +48,7 @@ const ModalWindow = ({ text, id }: ModalType) => {
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
             setInputValue(e.currentTarget.value);
           }}
-          onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) =>
-            handleEnter(e)
-          }
+          onPressEnter={() => handleOk()}
         />
       </Modal>
     </div>
