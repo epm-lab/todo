@@ -19,7 +19,12 @@ const INITIAL_TASKS: Task[] = [
   },
   {
     id: 3,
-    text: "Learn React Router",
+    text: "Add Ant Design",
+    isCompleted: false,
+  },
+  {
+    id: 4,
+    text: "Learn Type Script",
     isCompleted: false,
   },
 ];

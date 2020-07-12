@@ -4,7 +4,7 @@ import ToDo from "./containers/todo/todo";
 import "./App.css";
 
 function App() {
-  return <ToDo />;
+  return <div className="to-do"><ToDo /></div>;
 }
 
 export default App;

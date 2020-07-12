@@ -1,11 +1,6 @@
 body {
-  overflow-y: visible !important;
-}
-
-body {
   background-color: #9fcff5;
-  padding: 10px;
-  /* background-color: #5db4fa; */
+  padding: 20px;
 }
 
 .App {
@@ -26,4 +21,12 @@ body {
 
 .App-link {
   color: #61dafb;
+}
+
+.to-do {
+  margin: 0 auto;
+  max-width: 600px;
+  box-shadow: 6px 7px 13px 11px rgba(52, 113, 159, 0.28);
+  -webkit-box-shadow: 6px 7px 13px 11px rgba(52, 113, 159, 0.28);
+  -moz-box-shadow: 6px 7px 13px 11px rgba(52, 113, 159, 0.28);
 }
