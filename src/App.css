@@ -1,11 +1,6 @@
 body {
-  overflow-y: visible !important;
-}
-
-body {
   background-color: #9fcff5;
-  padding: 15px;
-  /* background-color: #5db4fa; */
+  padding: 20px;
 }
 
 .App {
