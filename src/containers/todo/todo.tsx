@@ -6,6 +6,7 @@ import { addTask } from "../../store/actions";
 import { AppHeader } from "../../components/app-header/appHeader";
 import { COMPLETED, ACTIVE } from "../../store/filterConstants";
 import TodoList from "../../components/todo-list/todo-list";
+import { PlusCircleOutlined } from '@ant-design/icons';
 import "antd/dist/antd.css";
 import "./todo.css";
 
@@ -15,7 +16,7 @@ function ToDo(props: InjectedFormProps): ReactElement {
   const filter = useSelector((state: RootState) => state.filter);
   const tasks = useSelector((state: RootState) => state.tasks);
   const isTasksExist = tasks && tasks.length > 0;
-  const { handleSubmit } = props;
+  const { handleSubmit, pristine, submitting } = props;
 
   const handleAddTask = (values: any) => {
     const taskText: string = values.toDoInput;
@@ -46,13 +47,19 @@ function ToDo(props: InjectedFormProps): ReactElement {
     <>
       <AppHeader amountOfTasks={tasks.length} activeBtn={filter} />
       <form className="form" onSubmit={handleSubmit(handleAddTask)}>
-        <Field
-          className="main-input ant-input"
-          name="toDoInput"
-          component="input"
-          type="text"
-          placeholder="Enter your new task here..."
-        />
+        <div className="main">
+          <Field
+            className="main-input ant-input"
+            name="toDoInput"
+            component="input"
+            type="text"
+            placeholder="Enter your new task here..."
+          />
+          <button id="btn-add" className="button-add" type="submit" disabled={pristine || submitting}>
+            Submit
+          </button>
+          <label htmlFor="btn-add" className="add-icon">{<PlusCircleOutlined />}</label>
+        </div>
         {isTasksExist && <TodoList tasksList={filteredTasks} />}
       </form>
     </>
