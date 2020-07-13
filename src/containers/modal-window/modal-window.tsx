@@ -3,16 +3,16 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeTask } from "../../store/actions";
 import { Modal, Button, Input, Tooltip } from "antd";
-import { EditOutlined } from '@ant-design/icons';
+import { EditOutlined } from "@ant-design/icons";
 
-import './modal-window.css';
+import "./Modal-window.css";
 
 interface ModalType {
   text: string;
   id: number;
 }
 
-const ModalWindow = ({ text, id }: ModalType) => {
+export const ModalWindow = ({ text, id }: ModalType) => {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const [value, setInputValue] = useState(text);
@@ -35,11 +35,16 @@ const ModalWindow = ({ text, id }: ModalType) => {
 
   return (
     <div className="modal">
-			<Button className="button-modal" id={`button${id}`} onClick={showModal}>
-			</Button>
-			<Tooltip title="Edit this text!" placement="right">
-				<label htmlFor={`button${id}`} className="edit-pencil">{<EditOutlined />}</label>
-			</Tooltip>	
+      <Button
+        className="button-modal"
+        id={`button${id}`}
+        onClick={showModal}
+      ></Button>
+      <Tooltip title="Edit this text!" placement="right">
+        <label htmlFor={`button${id}`} className="edit-pencil">
+          {<EditOutlined />}
+        </label>
+      </Tooltip>
       <Modal
         title="Editing text"
         visible={visible}
@@ -59,5 +64,3 @@ const ModalWindow = ({ text, id }: ModalType) => {
     </div>
   );
 };
-
-export default ModalWindow;

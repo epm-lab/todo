@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { changeFilter } from "./../../store/actions";
+import { changeFilter } from "../../store/actions";
+import { ALL, ACTIVE, COMPLETED } from "../../store/filterConstants";
 import { PageHeader, Button } from "antd";
-import { ALL, ACTIVE, COMPLETED } from "./../../store/filterConstants";
-import "./appHeader.css";
+
+import "./AppHeader.css";
 import "antd/dist/antd.css";
 
 export const AppHeader = ({ amountOfTasks, activeBtn }: AppHeaderTypes) => {

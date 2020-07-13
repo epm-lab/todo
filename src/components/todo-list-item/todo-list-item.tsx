@@ -1,35 +1,46 @@
-import React from 'react';
-import { useDispatch } from 'react-redux'
-import { removeTask, completeTask } from '../../store/actions'
-import "antd/dist/antd.css";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { removeTask, completeTask } from "../../store/actions";
+import { ModalWindow } from "../../containers/modal-window/Modal-window";
 import { Checkbox, Button, Tooltip } from "antd";
-import ModalWindow from '../../containers/modal-window/modal-window';
 
-import './todo-list-item.css';
+import "antd/dist/antd.css";
 
-const TodoListItem = ({id = 0, text = '', isCompleted}:TodoListItemTypes) => {
+import "./Todo-list-item.css";
+
+export const TodoListItem = ({
+  id = 0,
+  text = "",
+  isCompleted,
+}: TodoListItemTypes) => {
   const dispatch = useDispatch();
   return (
     <li className="todo-list-item">
       <span className="todo-list-item_span">
-        <Checkbox id={`check-${id}`} onChange={() => dispatch(completeTask(id))} checked={isCompleted ? true : false} className="checkbox"/>
-        <label className="label-check" htmlFor={`check-${id}`}><span className={isCompleted ? 'done-task' : 'active-task'}>{text}</span></label>
-        <ModalWindow text={text} id={id}/>
+        <Checkbox
+          id={`check-${id}`}
+          onChange={() => dispatch(completeTask(id))}
+          checked={isCompleted ? true : false}
+          className="checkbox"
+        />
+        <label className="label-check" htmlFor={`check-${id}`}>
+          <span className={isCompleted ? "done-task" : "active-task"}>
+            {text}
+          </span>
+        </label>
+        <ModalWindow text={text} id={id} />
       </span>
       <Tooltip title="Remove this item!" placement="left">
         <Button onClick={() => dispatch(removeTask(id))} size="small">
           Delete
         </Button>
-			</Tooltip>
+      </Tooltip>
     </li>
   );
-}
-
+};
 
 interface TodoListItemTypes {
-    id: number,
-    text: string,
-    isCompleted: boolean,
+  id: number;
+  text: string;
+  isCompleted: boolean;
 }
-
-export default TodoListItem;
