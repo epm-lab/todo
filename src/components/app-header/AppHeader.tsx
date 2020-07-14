@@ -16,25 +16,28 @@ export const AppHeader = ({ amountOfTasks, activeBtn }: AppHeaderTypes) => {
       subTitle={`You have ${amountOfTasks} tasks`}
       extra={[
         <Button
+          className="button-filter"
           onClick={() => dispatch(changeFilter(ALL))}
-          className={ALL === activeBtn ? "active" : ""}
+          type={ALL === activeBtn ? "primary" : "default"}
           key="3"
         >
           All
         </Button>,
         <Button
+          className="button-filter"
           onClick={() => dispatch(changeFilter(ACTIVE))}
-          className={ACTIVE === activeBtn ? "active" : ""}
+          type={ACTIVE === activeBtn ? "primary" : "default"}
           key="2"
         >
           Active
         </Button>,
         <Button
+          className="button-filter"
           onClick={() => dispatch(changeFilter(COMPLETED))}
-          className={COMPLETED === activeBtn ? "active" : ""}
+          type={COMPLETED === activeBtn ? "primary" : "default"}
           key="1"
         >
-          Completed
+          Done
         </Button>,
       ]}
     />
