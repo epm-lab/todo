@@ -26,3 +26,8 @@
 .active-task {
     text-decoration: none;
 }
+
+.button-delete {
+    width: 60px;
+    padding: 0;
+}

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeTask, completeTask } from "../../store/actions";
 import { ModalWindow } from "../../containers/modal-window/ModalWindow";
 import { Checkbox, Button, Tooltip } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 
 import "antd/dist/antd.css";
 
@@ -31,8 +32,8 @@ export const TodoListItem = ({
         <ModalWindow text={text} id={id} />
       </span>
       <Tooltip title="Remove this item!" placement="left">
-        <Button onClick={() => dispatch(removeTask(id))} size="small">
-          Delete
+        <Button className="button-delete" onClick={() => dispatch(removeTask(id))} >
+          <DeleteOutlined />
         </Button>
       </Tooltip>
     </li>

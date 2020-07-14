@@ -9,11 +9,11 @@
 	width: 100%;
 }
 
-.ant-btn.active {
-	color: #40a9ff;
-	border-color: #40a9ff;
-}
-
 .ant-page-header-heading-sub-title {
 	padding-top: 5px;
+}
+
+.header .ant-page-header-heading-extra .button-filter {
+	width: 60px;
+	padding: 0;
 }
