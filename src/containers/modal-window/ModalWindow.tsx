@@ -5,7 +5,7 @@ import { changeTask } from "../../store/actions";
 import { Modal, Button, Input, Tooltip } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 
-import "./Modal-window.css";
+import "./ModalWindow.css";
 
 interface ModalType {
   text: string;

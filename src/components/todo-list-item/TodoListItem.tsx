@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { removeTask, completeTask } from "../../store/actions";
-import { ModalWindow } from "../../containers/modal-window/Modal-window";
+import { ModalWindow } from "../../containers/modal-window/ModalWindow";
 import { Checkbox, Button, Tooltip } from "antd";
 
 import "antd/dist/antd.css";
 
-import "./Todo-list-item.css";
+import "./TodoListItem.css";
 
 export const TodoListItem = ({
   id = 0,

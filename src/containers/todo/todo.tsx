@@ -5,7 +5,7 @@ import { RootState, Task } from "../../store/appState";
 import { addTask } from "../../store/actions";
 import { AppHeader } from "../../components/app-header/AppHeader";
 import { COMPLETED, ACTIVE } from "../../store/filterConstants";
-import { TodoList } from "../../components/todo-list/Todo-list";
+import { TodoList } from "../../components/todo-list/TodoList";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
 import "antd/dist/antd.css";
