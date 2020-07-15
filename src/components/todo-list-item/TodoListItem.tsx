@@ -29,7 +29,7 @@ export const TodoListItem = ({
             {text}
           </span>
         </label>
-        <ModalWindow text={text} id={id} />
+        <ModalWindow id={id} />
       </span>
       <Tooltip title="Remove this item!" placement="left">
         <Button className="button-delete" onClick={() => dispatch(removeTask(id))} >

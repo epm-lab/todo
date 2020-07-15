@@ -1,36 +1,31 @@
 import React from "react";
+import { Field, reduxForm } from 'redux-form'
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { changeTask } from "../../store/actions";
-import { Modal, Button, Input, Tooltip } from "antd";
+import { Modal, Button, Tooltip } from "antd";
 import { EditOutlined } from "@ant-design/icons";
+import { RootState } from "../../store/appState";
 
 import "./ModalWindow.css";
 
-interface ModalType {
-  text: string;
-  id: number;
-}
-
-export const ModalWindow = ({ text, id }: ModalType) => {
-  const dispatch = useDispatch();
+const ModalWindowContainer = (props: any) => {
+  const { id } = props.ownProps
+  const { handleSubmit, pristine, submitting, dispatch } = props
   const [visible, setVisible] = useState(false);
-  const [value, setInputValue] = useState(text);
 
   const showModal = (): void => {
     setVisible(true);
   };
 
-  const handleOk = (): void => {
+  const handleOk = (values: any): void => {
     setVisible(false);
-    if (text !== value) {
-      dispatch(changeTask(id, value));
-    }
+    dispatch(changeTask(id, values.modalWindowInput));
+    values.modalWindowInput = "";
   };
 
   const handleCancel = (): void => {
     setVisible(false);
-    setInputValue(text);
   };
 
   return (
@@ -51,16 +46,35 @@ export const ModalWindow = ({ text, id }: ModalType) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <Input
-          autoFocus
-          type="text"
-          value={value}
-          onChange={(e: React.FormEvent<HTMLInputElement>) => {
-            setInputValue(e.currentTarget.value);
-          }}
-          onPressEnter={() => handleOk()}
-        />
+        <form onSubmit={handleSubmit(handleOk)} >
+          <Field
+            className="main-input ant-input"
+            name="modalWindowInput"
+            component="input"
+            type="text"
+            placeholder="Enter your new task here..."
+          />
+          <button className="ant-btn" type="submit" disabled={pristine || submitting}>
+            Ok
+          </button>
+        </form>
       </Modal>
-    </div>
+    </div >
   );
 };
+
+const formCreator = reduxForm({
+  form: "toDoWindow",
+});
+
+const connector = connect(
+  (state: RootState, props: any) => ({
+    tasks: state.tasks,
+    ownProps: props
+  }),
+  {
+    changeTask
+  }
+)
+
+export const ModalWindow = connector(formCreator(ModalWindowContainer))

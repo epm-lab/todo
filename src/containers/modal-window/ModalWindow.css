@@ -13,3 +13,7 @@
 .edit-pencil:hover {
     color: #3FA3FF;
 }
+
+.ant-modal-footer {
+    display: none;
+}

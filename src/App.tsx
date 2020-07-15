@@ -1,5 +1,5 @@
 import React from "react";
-import ToDo from "./containers/todo/Todo";
+import { ToDo } from "./containers/todo/Todo";
 
 import "./App.css";
 

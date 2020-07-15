@@ -11,7 +11,7 @@ import { PlusCircleOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import "./Todo.css";
 
-const ToDo = (props: InjectedFormProps): ReactElement => {
+const ToDoContainer = (props: InjectedFormProps): ReactElement => {
   const dispatch = useDispatch();
   const filter = useSelector((state: RootState) => state.filter);
   const tasks = useSelector((state: RootState) => state.tasks);
@@ -73,6 +73,6 @@ const ToDo = (props: InjectedFormProps): ReactElement => {
   );
 };
 
-export default reduxForm({
+export const ToDo = reduxForm({
   form: "toDo",
-})(ToDo);
+})(ToDoContainer);
