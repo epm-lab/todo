@@ -3,4 +3,7 @@
     padding: 0;
     font-size: 130%;
     width: 92%;
+    overflow-y: scroll;
+    max-height: 300px;
 }
+
