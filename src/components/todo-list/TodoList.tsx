@@ -10,6 +10,7 @@ export const TodoList = ({ tasksList }: TodoTypes) => {
         <TodoListItem text={text} isCompleted={isCompleted} key={id} id={id} />
       ))}
     </ul>
+    
   );
 };
 
