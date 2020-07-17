@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { changeFilter } from "../../store/actions";
-import { ALL, ACTIVE, COMPLETED } from "../../store/filterConstants";
 import { PageHeader, Button } from "antd";
+
+import { ALL, ACTIVE, COMPLETED } from "../../store/constants/filterConstants";
 
 import "./AppHeader.css";
 import "antd/dist/antd.css";
 
-const AppHeader = ({ amountOfTasks, activeBtn, dispatch }: AppHeaderTypes) => {
+const AppHeader = ({ amountOfTasks, activeBtn, onClick }: AppHeaderTypes) => {
   return (
     <PageHeader
       className="header"
@@ -16,7 +16,7 @@ const AppHeader = ({ amountOfTasks, activeBtn, dispatch }: AppHeaderTypes) => {
       extra={[
         <Button
           className="button-filter"
-          onClick={() => dispatch(changeFilter(ALL))}
+          onClick={() => onClick(ALL)}
           type={ALL === activeBtn ? "primary" : "default"}
           key="3"
         >
@@ -24,7 +24,7 @@ const AppHeader = ({ amountOfTasks, activeBtn, dispatch }: AppHeaderTypes) => {
         </Button>,
         <Button
           className="button-filter"
-          onClick={() => dispatch(changeFilter(ACTIVE))}
+          onClick={() => onClick(ACTIVE)}
           type={ACTIVE === activeBtn ? "primary" : "default"}
           key="2"
         >
@@ -32,7 +32,7 @@ const AppHeader = ({ amountOfTasks, activeBtn, dispatch }: AppHeaderTypes) => {
         </Button>,
         <Button
           className="button-filter"
-          onClick={() => dispatch(changeFilter(COMPLETED))}
+          onClick={() => onClick(COMPLETED)}
           type={COMPLETED === activeBtn ? "primary" : "default"}
           key="1"
         >
@@ -46,7 +46,7 @@ const AppHeader = ({ amountOfTasks, activeBtn, dispatch }: AppHeaderTypes) => {
 interface AppHeaderTypes {
   amountOfTasks: number;
   activeBtn: string;
-  dispatch: any;
+  onClick: any;
 }
 
 export default connect()(AppHeader);

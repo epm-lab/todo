@@ -1,7 +1,8 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './reducers';
 import { InjectedFormProps } from 'redux-form';
+
+import { rootReducer } from './rootReducer';
 
 export interface Task {
   id: number,
@@ -15,6 +16,6 @@ export interface RootState {
   form: InjectedFormProps,
 }
 
-const store = createStore(rootReducer, composeWithDevTools());
+const AppState = createStore(rootReducer, composeWithDevTools());
 
-export default store;
+export default AppState;
