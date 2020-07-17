@@ -46,16 +46,16 @@ const ModalWindowContainer = (props: any) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <form onSubmit={handleSubmit(handleOk)} >
+        <form className="form-modal" onSubmit={handleSubmit(handleOk)} >
           <Field
-            className="main-input ant-input"
+            className="modal-input ant-input"
             name="modalWindowInput"
             component="input"
             type="text"
             placeholder="Enter your new task here..."
           />
-          <button className="ant-btn" type="submit" disabled={pristine || submitting}>
-            Ok
+          <button className="ant-btn ant-btn-primary" type="submit" disabled={pristine || submitting}>
+            Ок
           </button>
         </form>
       </Modal>
