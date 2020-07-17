@@ -4,7 +4,6 @@ import { TodoListItem } from "../todo-list-item/TodoListItem";
 import "./TodoList.css";
 
 export const TodoList = ({ tasksList }: TodoTypes) => {
-  console.log(tasksList);
   return (
     <ul className="todo-list">
       {tasksList.map(({ id, text, isCompleted }) => (

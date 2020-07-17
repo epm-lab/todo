@@ -14,7 +14,6 @@ export const TodoListItem = ({
   text = "",
   isCompleted,
 }: TodoListItemTypes) => {
-  console.log(id);
   const dispatch = useDispatch();
   return (
     <li className="todo-list-item">
