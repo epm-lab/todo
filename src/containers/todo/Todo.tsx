@@ -1,10 +1,11 @@
 import React, { ReactElement } from "react";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
+
 import { RootState, Task } from "../../store/appState";
-import { addTask } from "../../store/actions";
+import {addTask, changeFilter, completeTask, removeTask} from "../../store/actions";
 import AppHeader from "../../components/app-header/AppHeader";
-import { COMPLETED, ACTIVE } from "../../store/filterConstants";
+import { COMPLETED, ACTIVE } from "../../store/constants/filterConstants";
 import { TodoList } from "../../components/todo-list/TodoList";
 
 import "antd/dist/antd.css";
@@ -13,7 +14,17 @@ import "./Todo.css";
 //React.Component<InjectedFormProps<IUser, IProps> & IProps>
 //:React.Component<CustomProps & InjectedFormProps<{}, CustomProps>>
 
-const ToDoContainer = ({ handleSubmit, pristine, submitting, dispatch, filter, tasks }: any): ReactElement => {
+const ToDoContainer = ({
+                         handleSubmit,
+                         pristine,
+                         submitting,
+                         filter,
+                         tasks,
+                         onFilterClick,
+                         onAddTask,
+                         onComplete,
+                         onRemove
+}: any): ReactElement => {
 
   const isTasksExist = tasks && tasks.length > 0;
 
@@ -26,7 +37,8 @@ const ToDoContainer = ({ handleSubmit, pristine, submitting, dispatch, filter, t
         isCompleted: false,
       };
       values.toDoInput = "";
-      dispatch(addTask(newTask));
+      console.log(newTask);
+      onAddTask(newTask);
     }
   };
 
@@ -45,7 +57,7 @@ const ToDoContainer = ({ handleSubmit, pristine, submitting, dispatch, filter, t
 
   return (
     <>
-      <AppHeader amountOfTasks={tasks.length} activeBtn={filter}/>
+      <AppHeader amountOfTasks={tasks.length} activeBtn={filter} onClick={onFilterClick} />
       <form className="form-add" onSubmit={handleSubmit(handleAddTask)}>
         <div className="main">
           <Field
@@ -64,7 +76,7 @@ const ToDoContainer = ({ handleSubmit, pristine, submitting, dispatch, filter, t
             Add
           </button>
         </div>
-        {isTasksExist && <TodoList tasksList={filteredTasks} />}
+        {isTasksExist && <TodoList tasksList={filteredTasks} onRemove={onRemove} onComplete={onComplete} />}
       </form>
     </>
   );
@@ -81,9 +93,12 @@ const connector = connect(
     tasks: state.tasks,
     filter: state.filter,
   }),
-  {
-    addTask
-  }
+  (dispatch) => ({
+    onAddTask: (newTask: Task) => dispatch(addTask(newTask)),
+    onFilterClick: (selectedFilter: string) => dispatch(changeFilter(selectedFilter)),
+    onComplete: (id: number) => dispatch(completeTask(id)),
+    onRemove: (id: number) => dispatch(removeTask(id))
+  })
 )
 
 export const ToDo = connector(formCreator(ToDoContainer));

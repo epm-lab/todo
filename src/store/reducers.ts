@@ -1,35 +1,9 @@
-import { combineReducers } from "redux";
-import { reducer as reduxFormReducer } from "redux-form";
-import * as actionTypes from "./actionTypes";
+import * as actionTypes from "./constants/actionTypes";
 import { Task } from "./appState";
 import { TaskListActionTypes, ChangeFilterType } from "./actions";
-import { ALL } from "./filterConstants";
+import { INITIAL_TASKS, BASE_FILTER } from "./constants/storeConstants";
 
-const BASE_FILTER: string = ALL;
-const INITIAL_TASKS: Task[] = [
-  {
-    id: 1,
-    text: "Learn ReactJS",
-    isCompleted: false,
-  },
-  {
-    id: 2,
-    text: "Learn Redux",
-    isCompleted: false,
-  },
-  {
-    id: 3,
-    text: "Add Ant Design",
-    isCompleted: false,
-  },
-  {
-    id: 4,
-    text: "Learn Type Script",
-    isCompleted: false,
-  },
-];
-
-const tasks = (state = INITIAL_TASKS, action: TaskListActionTypes): Task[] => {
+export const tasks = (state = INITIAL_TASKS, action: TaskListActionTypes): Task[] => {
   switch (action.type) {
     case actionTypes.ADD_TASK:
       return [
@@ -61,7 +35,7 @@ const tasks = (state = INITIAL_TASKS, action: TaskListActionTypes): Task[] => {
   }
 };
 
-const filter = (state = BASE_FILTER, action: ChangeFilterType): string => {
+export const filter = (state = BASE_FILTER, action: ChangeFilterType): string => {
   const { type, activeFilter } = action;
   switch (type) {
     case actionTypes.CHANGE_FILTER:
@@ -71,10 +45,4 @@ const filter = (state = BASE_FILTER, action: ChangeFilterType): string => {
   }
 };
 
-const rootReducer = combineReducers({
-  tasks,
-  filter,
-  form: reduxFormReducer,
-});
 
-export default rootReducer;

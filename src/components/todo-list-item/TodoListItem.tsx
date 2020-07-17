@@ -1,26 +1,25 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { removeTask, completeTask } from "../../store/actions";
-import { ModalWindow } from "../../containers/modal-window/ModalWindow";
 import { Checkbox, Button, Tooltip } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
-import "antd/dist/antd.css";
+import { ModalWindow } from "../../containers/modal-window/ModalWindow";
 
+import "antd/dist/antd.css";
 import "./TodoListItem.css";
 
 export const TodoListItem = ({
   id = 0,
   text = "",
   isCompleted,
+  onRemove,
+  onComplete
 }: TodoListItemTypes) => {
-  const dispatch = useDispatch();
   return (
     <li className="todo-list-item">
       <span className="todo-list-item_span">
         <Checkbox
           id={`check-${id}`}
-          onChange={() => dispatch(completeTask(id))}
+          onChange={() => onComplete(id)}
           checked={isCompleted ? true : false}
           className="checkbox"
         />
@@ -32,7 +31,7 @@ export const TodoListItem = ({
         <ModalWindow id={id} />
       </span>
       <Tooltip title="Remove this item!" placement="left">
-        <Button className="button-delete" onClick={() => dispatch(removeTask(id))} >
+        <Button className="button-delete" onClick={() => onRemove(id)} >
           <DeleteOutlined />
         </Button>
       </Tooltip>
@@ -44,4 +43,6 @@ interface TodoListItemTypes {
   id: number;
   text: string;
   isCompleted: boolean;
+  onRemove: any;
+  onComplete: any;
 }

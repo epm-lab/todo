@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Field, reduxForm } from 'redux-form'
-import { useState } from "react";
 import { connect } from "react-redux";
-import { changeTask } from "../../store/actions";
 import { Modal, Button, Tooltip } from "antd";
 import { EditOutlined } from "@ant-design/icons";
+
+import { changeTask } from "../../store/actions";
 import { RootState } from "../../store/appState";
 
 import "./ModalWindow.css";
 
 const ModalWindowContainer = (props: any) => {
   const { id } = props.ownProps;
-  const { handleSubmit, pristine, submitting, dispatch } = props;
+  const { handleSubmit, pristine, submitting, onChange } = props;
   const [visible, setVisible] = useState(false);
 
   const showModal = (): void => {
@@ -20,7 +20,7 @@ const ModalWindowContainer = (props: any) => {
 
   const handleOk = (values: any): void => {
     setVisible(false);
-    dispatch(changeTask(id, values.modalWindowInput));
+    onChange(id, values.modalWindowInput);
     values.modalWindowInput = "";
   };
 
@@ -73,9 +73,9 @@ const connector = connect(
     tasks: state.tasks,
     ownProps: props
   }),
-  {
-    changeTask
-  }
+  (dispatch) => ({
+    onChange: (id: number, value: any) => dispatch(changeTask(id, value))
+  })
 )
 
 
