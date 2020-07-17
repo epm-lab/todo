@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { changeFilter } from "../../store/actions";
 import { ALL, ACTIVE, COMPLETED } from "../../store/filterConstants";
 import { PageHeader, Button } from "antd";
@@ -7,8 +7,7 @@ import { PageHeader, Button } from "antd";
 import "./AppHeader.css";
 import "antd/dist/antd.css";
 
-export const AppHeader = ({ amountOfTasks, activeBtn }: AppHeaderTypes) => {
-  const dispatch = useDispatch();
+const AppHeader = ({ amountOfTasks, activeBtn, dispatch }: AppHeaderTypes) => {
   return (
     <PageHeader
       className="header"
@@ -47,4 +46,7 @@ export const AppHeader = ({ amountOfTasks, activeBtn }: AppHeaderTypes) => {
 interface AppHeaderTypes {
   amountOfTasks: number;
   activeBtn: string;
+  dispatch: any;
 }
+
+export default connect()(AppHeader);

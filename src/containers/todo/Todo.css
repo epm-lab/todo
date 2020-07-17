@@ -1,10 +1,10 @@
-.main-input {
+/* .main-input {
   width: 92%;
   margin: 0;
   height: 38px;
-}
+} */
 
-.form {
+.form-add {
   background-color: #F1F1F1;
   max-width: 600px;
   margin: 0 auto;
@@ -17,26 +17,20 @@
   margin-bottom: 50px;
 }
 
-.button-add {
-  display: none;
-}
-
-.add-icon {
-  color: lightgrey;
-  cursor: pointer;
-  font-size: 250%;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  margin-left: 10px
-}
-
-.add-icon:hover {
-  color: #3FA3FF;
-}
-
 .main {
+  width: 92%;
+  display: grid;
+  grid-template-areas: "area area2";
+  grid-template: auto / auto 60px;
+  grid-column-gap: 5px;
+  align-items: center;
+  margin: 5px 0 26px 0;
+}
+
+/* .main {
   width: 92%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 10px 0 30px 0;
-}
+} */
