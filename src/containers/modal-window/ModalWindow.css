@@ -17,3 +17,11 @@
 .ant-modal-footer {
     display: none;
 }
+
+.form-modal {
+    display: grid;
+    grid-template-areas: "area area2";
+    grid-template: auto / auto 60px;
+    grid-column-gap: 5px;
+    align-items: center;
+}
