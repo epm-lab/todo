@@ -10,8 +10,8 @@ import { RootState } from "../../store/appState";
 import "./ModalWindow.css";
 
 const ModalWindowContainer = (props: any) => {
-  const { id } = props.ownProps
-  const { handleSubmit, pristine, submitting, dispatch } = props
+  const { id } = props.ownProps;
+  const { handleSubmit, pristine, submitting, dispatch } = props;
   const [visible, setVisible] = useState(false);
 
   const showModal = (): void => {
@@ -48,6 +48,7 @@ const ModalWindowContainer = (props: any) => {
       >
         <form className="form-modal" onSubmit={handleSubmit(handleOk)} >
           <Field
+            autoFocus={true}
             className="modal-input ant-input"
             name="modalWindowInput"
             component="input"
@@ -77,4 +78,5 @@ const connector = connect(
   }
 )
 
-export const ModalWindow = connector(formCreator(ModalWindowContainer))
+
+export const ModalWindow = connector(formCreator(ModalWindowContainer));

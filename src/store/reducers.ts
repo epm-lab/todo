@@ -45,14 +45,14 @@ const tasks = (state = INITIAL_TASKS, action: TaskListActionTypes): Task[] => {
     case actionTypes.COMPLETE_TASK:
       return [...state].map((task) => {
         if (task.id === action.id) {
-          task.isCompleted = !task.isCompleted;
+          return {...task, isCompleted: !task.isCompleted}
         }
         return task;
       });
     case actionTypes.CHANGE_TASK:
       return [...state].map((task) => {
         if (task.id === action.id) {
-          task.text = action.newText
+          return {...task, text: action.newText}
         }
         return task;
       });

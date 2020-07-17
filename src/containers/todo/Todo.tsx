@@ -1,22 +1,21 @@
 import React, { ReactElement } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { InjectedFormProps, reduxForm, Field } from "redux-form";
+import { connect } from "react-redux";
+import { reduxForm, Field } from "redux-form";
 import { RootState, Task } from "../../store/appState";
 import { addTask } from "../../store/actions";
-import { AppHeader } from "../../components/app-header/AppHeader";
+import AppHeader from "../../components/app-header/AppHeader";
 import { COMPLETED, ACTIVE } from "../../store/filterConstants";
 import { TodoList } from "../../components/todo-list/TodoList";
-import { PlusCircleOutlined } from "@ant-design/icons";
 
 import "antd/dist/antd.css";
 import "./Todo.css";
 
-const ToDoContainer = (props: InjectedFormProps): ReactElement => {
-  const dispatch = useDispatch();
-  const filter = useSelector((state: RootState) => state.filter);
-  const tasks = useSelector((state: RootState) => state.tasks);
+//React.Component<InjectedFormProps<IUser, IProps> & IProps>
+//:React.Component<CustomProps & InjectedFormProps<{}, CustomProps>>
+
+const ToDoContainer = ({ handleSubmit, pristine, submitting, dispatch, filter, tasks }: any): ReactElement => {
+
   const isTasksExist = tasks && tasks.length > 0;
-  const { handleSubmit, pristine, submitting } = props;
 
   const handleAddTask = (values: any) => {
     const taskText: string = values.toDoInput;
@@ -43,10 +42,11 @@ const ToDoContainer = (props: InjectedFormProps): ReactElement => {
   };
 
   const filteredTasks = filterTasks(tasks, filter);
+
   return (
     <>
-      <AppHeader amountOfTasks={tasks.length} activeBtn={filter} />
-      <form className="form" onSubmit={handleSubmit(handleAddTask)}>
+      <AppHeader amountOfTasks={tasks.length} activeBtn={filter}/>
+      <form className="form-add" onSubmit={handleSubmit(handleAddTask)}>
         <div className="main">
           <Field
             className="main-input ant-input"
@@ -57,15 +57,12 @@ const ToDoContainer = (props: InjectedFormProps): ReactElement => {
           />
           <button
             id="btn-add"
-            className="button-add"
+            className="button-add ant-btn ant-btn-primary"
             type="submit"
             disabled={pristine || submitting}
           >
-            Submit
+            Add
           </button>
-          <label htmlFor="btn-add" className="add-icon">
-            {<PlusCircleOutlined />}
-          </label>
         </div>
         {isTasksExist && <TodoList tasksList={filteredTasks} />}
       </form>
@@ -73,6 +70,20 @@ const ToDoContainer = (props: InjectedFormProps): ReactElement => {
   );
 };
 
-export const ToDo = reduxForm({
+
+const formCreator = reduxForm({
   form: "toDo",
-})(ToDoContainer);
+  touchOnChange: true,
+});
+
+const connector = connect(
+  (state: RootState) => ({
+    tasks: state.tasks,
+    filter: state.filter,
+  }),
+  {
+    addTask
+  }
+)
+
+export const ToDo = connector(formCreator(ToDoContainer));
