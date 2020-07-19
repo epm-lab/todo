@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 
 import { RootState, Task } from "../../store/appState";
-import {addTask, changeFilter, completeTask, removeTask} from "../../store/actions";
-import AppHeader from "../../components/app-header/AppHeader";
+import { addTask, changeFilter, completeTask, removeTask } from "../../store/actions";
+import { AppHeader } from "../../components/app-header/AppHeader";
 import { COMPLETED, ACTIVE } from "../../store/constants/filterConstants";
 import { TodoList } from "../../components/todo-list/TodoList";
 
@@ -37,7 +37,6 @@ const ToDoContainer = ({
         isCompleted: false,
       };
       values.toDoInput = "";
-      console.log(newTask);
       onAddTask(newTask);
     }
   };
@@ -59,9 +58,9 @@ const ToDoContainer = ({
     <>
       <AppHeader amountOfTasks={tasks.length} activeBtn={filter} onClick={onFilterClick} />
       <form className="form-add" onSubmit={handleSubmit(handleAddTask)}>
-        <div className="main">
+        <div className="main-input">
           <Field
-            className="main-input ant-input"
+            className="ant-input"
             name="toDoInput"
             component="input"
             type="text"

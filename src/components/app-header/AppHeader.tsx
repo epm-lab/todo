@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import { PageHeader, Button } from "antd";
 
 import { ALL, ACTIVE, COMPLETED } from "../../store/constants/filterConstants";
@@ -7,7 +6,7 @@ import { ALL, ACTIVE, COMPLETED } from "../../store/constants/filterConstants";
 import "./AppHeader.css";
 import "antd/dist/antd.css";
 
-const AppHeader = ({ amountOfTasks, activeBtn, onClick }: AppHeaderTypes) => {
+export const AppHeader = ({ amountOfTasks, activeBtn, onClick }: AppHeaderTypes) => {
   return (
     <PageHeader
       className="header"
@@ -49,4 +48,3 @@ interface AppHeaderTypes {
   onClick: any;
 }
 
-export default connect()(AppHeader);

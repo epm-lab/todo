@@ -24,13 +24,13 @@ export const TodoListItem = ({
           className="checkbox"
         />
         <label className="label-check" htmlFor={`check-${id}`}>
-          <span className={isCompleted ? "done-task" : "active-task"}>
+          <span className={isCompleted ? "done-task" : "active-task"} lang="ru">
             {text}
           </span>
         </label>
         <ModalWindow id={id} />
       </span>
-      <Tooltip title="Remove this item!" placement="left">
+      <Tooltip title="Remove!" placement="left">
         <Button className="button-delete" onClick={() => onRemove(id)} >
           <DeleteOutlined />
         </Button>
