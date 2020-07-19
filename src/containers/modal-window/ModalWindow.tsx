@@ -10,7 +10,6 @@ import { Input } from "../../components/custom-input/CustomInput";
 
 import "./ModalWindow.css";
 
-// const ModalWindowContainer = (props: any) => {
 const ModalWindowContainer = ({
   handleSubmit,
   pristine,
@@ -19,9 +18,7 @@ const ModalWindowContainer = ({
   ownProps,
 }: any) => {
   const { id } = ownProps;
-  // console.log(typeof props);
-  // const { id } = props.ownProps;
-  // const { handleSubmit, pristine, submitting, onChange } = props;
+
   const [visible, setVisible] = useState(false);
 
   const showModal = (): void => {
@@ -61,7 +58,6 @@ const ModalWindowContainer = ({
             autoFocus={true}
             className="modal-input ant-input"
             name="modalWindowInput"
-            // component="input"
             component={Input}
             type="text"
             placeholder="Enter your new task here..."
