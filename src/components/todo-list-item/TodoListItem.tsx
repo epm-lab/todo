@@ -12,7 +12,7 @@ export const TodoListItem = ({
   text = "",
   isCompleted,
   onRemove,
-  onComplete
+  onComplete,
 }: TodoListItemTypes) => {
   return (
     <li className="todo-list-item">
@@ -43,6 +43,6 @@ interface TodoListItemTypes {
   id: number;
   text: string;
   isCompleted: boolean;
-  onRemove: any;
-  onComplete: any;
+  onRemove: (id: number) => {};
+  onComplete: (id: number) => {};
 }

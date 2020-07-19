@@ -1,17 +1,24 @@
 import React, { useState } from "react";
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { Modal, Button, Tooltip } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 
 import { changeTask } from "../../store/actions";
 import { RootState } from "../../store/appState";
+import { Input } from "../../components/custom-input/CustomInput";
 
 import "./ModalWindow.css";
 
-const ModalWindowContainer = (props: any) => {
-  const { id } = props.ownProps;
-  const { handleSubmit, pristine, submitting, onChange } = props;
+const ModalWindowContainer = ({
+  handleSubmit,
+  pristine,
+  submitting,
+  onChange,
+  ownProps,
+}: any) => {
+  const { id } = ownProps;
+
   const [visible, setVisible] = useState(false);
 
   const showModal = (): void => {
@@ -46,21 +53,25 @@ const ModalWindowContainer = (props: any) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <form className="form-modal" onSubmit={handleSubmit(handleOk)} >
+        <form className="form-modal" onSubmit={handleSubmit(handleOk)}>
           <Field
             autoFocus={true}
             className="modal-input ant-input"
             name="modalWindowInput"
-            component="input"
+            component={Input}
             type="text"
             placeholder="Enter your new task here..."
           />
-          <button className="ant-btn ant-btn-primary" type="submit" disabled={pristine || submitting}>
+          <button
+            className="ant-btn ant-btn-primary"
+            type="submit"
+            disabled={pristine || submitting}
+          >
             Ок
           </button>
         </form>
       </Modal>
-    </div >
+    </div>
   );
 };
 
@@ -71,12 +82,19 @@ const formCreator = reduxForm({
 const connector = connect(
   (state: RootState, props: any) => ({
     tasks: state.tasks,
-    ownProps: props
+    ownProps: props,
   }),
   (dispatch) => ({
-    onChange: (id: number, value: any) => dispatch(changeTask(id, value))
+    onChange: (id: number, value: any) => dispatch(changeTask(id, value)),
   })
-)
+);
 
+interface ModalTypes {
+  handleSubmit: () => {};
+  pristine: boolean;
+  submitting: boolean;
+  onChange: () => {};
+  ownProps: () => {};
+}
 
 export const ModalWindow = connector(formCreator(ModalWindowContainer));

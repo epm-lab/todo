@@ -18,7 +18,6 @@ export const TodoList = ({ tasksList, onComplete, onRemove }: TodoTypes) => {
         />
       ))}
     </ul>
-    
   );
 };
 
@@ -30,6 +29,6 @@ interface ItemTypes {
 
 interface TodoTypes {
   tasksList: Array<ItemTypes>;
-  onComplete: any;
-  onRemove: any;
+  onComplete: () => {};
+  onRemove: () => {};
 }

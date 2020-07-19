@@ -45,6 +45,6 @@ export const AppHeader = ({ amountOfTasks, activeBtn, onClick }: AppHeaderTypes)
 interface AppHeaderTypes {
   amountOfTasks: number;
   activeBtn: string;
-  onClick: any;
+  onClick: (filterValue: string) => {};
 }
 
