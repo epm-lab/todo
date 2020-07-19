@@ -18,7 +18,7 @@ const ModalWindowContainer = ({
   onChange,
   ownProps,
 }: any) => {
-  const { id } = ownProps;
+  const { id, text } = ownProps;
 
   const [visible, setVisible] = useState(false);
 
@@ -58,9 +58,10 @@ const ModalWindowContainer = ({
           <Field
             className="modal-input ant-input"
             name="modalWindowInput"
-            component={Input}
+            component= {Input}
             type="text"
             placeholder="Enter your new task here..."
+            val={text}
             validate={[MIN_LENGTH_2, MAX_LENGTH_25]}
           />
           <button
