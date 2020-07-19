@@ -18,6 +18,7 @@
 }
 
 .main {
+  position: relative;
   width: 92%;
   display: grid;
   grid-template-areas: "area area2";

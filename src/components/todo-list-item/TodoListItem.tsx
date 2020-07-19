@@ -12,7 +12,7 @@ export const TodoListItem = ({
   text = "",
   isCompleted,
   onRemove,
-  onComplete
+  onComplete,
 }: TodoListItemTypes) => {
   return (
     <li className="todo-list-item">
@@ -31,7 +31,7 @@ export const TodoListItem = ({
         <ModalWindow id={id} />
       </span>
       <Tooltip title="Remove this item!" placement="left">
-        <Button className="button-delete" onClick={() => onRemove(id)} >
+        <Button className="button-delete" onClick={() => onRemove(id)}>
           <DeleteOutlined />
         </Button>
       </Tooltip>
@@ -43,6 +43,6 @@ interface TodoListItemTypes {
   id: number;
   text: string;
   isCompleted: boolean;
-  onRemove: any;
-  onComplete: any;
+  onRemove: (id: number) => {};
+  onComplete: (id: number) => {};
 }

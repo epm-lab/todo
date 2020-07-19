@@ -1,0 +1,9 @@
+.formControl.error input {
+	border: solid rgb(227, 68, 68) 1px;
+}
+
+.formControl.error span {
+	color: rgb(227, 68, 68);
+	position: absolute;
+	top: -21px;
+}
