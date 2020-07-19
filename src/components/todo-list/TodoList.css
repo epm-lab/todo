@@ -5,5 +5,9 @@
     width: 100%;
     overflow-y: scroll;
     max-height: 300px;
+    display: grid;
+    justify-items: center;
+    grid-row-gap: 17px;
+    margin-bottom: 17px;
 }
 

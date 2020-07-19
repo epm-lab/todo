@@ -1,20 +1,19 @@
 .todo-list-item {
     list-style-type: none;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-areas: "first second";
+    grid-template: auto / minmax(auto, 480px) 60px;
+    grid-column-gap: 10px;
     align-items: center;
     width: 92%;
-    margin: 0 auto;
-    margin-bottom: 17px;
 }
 
 .todo-list-item_span {
-    display: flex;
+    display: grid;
+    grid-template-areas: "check text modal";
+    grid-template: auto / 25px auto 28px;
     align-items: center;
-}
-
-.checkbox {
-    padding-right: 0.6em;
+    justify-content: start;
 }
 
 .label-check {
@@ -22,6 +21,7 @@
 }
 
 .done-task {
+    word-break: break-all;
     text-decoration: line-through;
 }
 
