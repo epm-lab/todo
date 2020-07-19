@@ -61,7 +61,7 @@ const ModalWindowContainer = ({
             component= {Input}
             type="text"
             placeholder="Enter your new task here..."
-            val={text}
+            val={{text, isModal: true}}
             validate={[MIN_LENGTH_2, MAX_LENGTH_25]}
           />
           <button

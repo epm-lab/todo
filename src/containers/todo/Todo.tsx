@@ -74,6 +74,7 @@ const ToDoContainer = ({
             name="toDoInput"
             component={Input}
             type="text"
+            val={{isModal: false}}
             placeholder="Enter your new task here..."
             validate={[MIN_LENGTH_2, MAX_LENGTH_25]}
           />
