@@ -24,7 +24,7 @@ export const TodoListItem = ({
           className="checkbox"
         />
         <label className="label-check" htmlFor={`check-${id}`}>
-          <span className={isCompleted ? "done-task" : "active-task"}>
+          <span className={isCompleted ? "done-task" : "active-task"} lang="ru">
             {text}
           </span>
         </label>
