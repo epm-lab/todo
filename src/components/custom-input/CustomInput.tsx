@@ -1,7 +1,9 @@
 import React from "react";
+
 import styles from "./CustomInput.module.css";
 
-export const Input = ({ input, meta, ...props }: any) => {
+
+export const Input = ({ input, meta, ...props }:any) => {
   const hasError = meta.touched && meta.error;
   const { text, isModal } = props.val;
   return (

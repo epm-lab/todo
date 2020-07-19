@@ -34,7 +34,7 @@ const ToDoContainer = ({
 }: any): ReactElement => {
   const isTasksExist = tasks && tasks.length > 0;
 
-  const handleAddTask = (values: any) => {
+  const handleAddTask = ( values: any) => {
     const taskText: string = values.toDoInput;
     if (taskText && taskText.length > 0) {
       const newTask: Task = {

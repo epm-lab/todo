@@ -14,7 +14,6 @@ import "./ModalWindow.css";
 const ModalWindowContainer = ({
   handleSubmit,
   pristine,
-  submitting,
   onChange,
   ownProps,
 }: any) => {
@@ -91,13 +90,5 @@ const connector = connect(
     onChange: (id: number, value: any) => dispatch(changeTask(id, value)),
   })
 );
-
-interface ModalTypes {
-  handleSubmit: () => {};
-  pristine: boolean;
-  submitting: boolean;
-  onChange: () => {};
-  ownProps: () => {};
-}
 
 export const ModalWindow = connector(formCreator(ModalWindowContainer));
