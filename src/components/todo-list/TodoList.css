@@ -1,9 +1,12 @@
 .todo-list {
     margin: 0;
     padding: 0;
-    font-size: 130%;
+    font-size: 120%;
     width: 100%;
     overflow-y: scroll;
     max-height: 300px;
+    display: grid;
+    grid-row-gap: 17px;
+    margin-bottom: 17px;
 }
 

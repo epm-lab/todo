@@ -42,7 +42,7 @@ const ModalWindowContainer = ({
         id={`button${id}`}
         onClick={showModal}
       ></Button>
-      <Tooltip title="Edit this text!" placement="right">
+      <Tooltip title="Edit text!" placement="right">
         <label htmlFor={`button${id}`} className="edit-pencil">
           {<EditOutlined />}
         </label>
