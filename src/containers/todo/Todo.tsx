@@ -8,8 +8,7 @@ import {
   changeFilter,
   completeTask,
   removeTask,
-} from "../../store/actions";
-import { addTask, changeFilter, completeTask, removeTask } from "../../store/actions";
+} from "./../../store/actions";
 import { AppHeader } from "../../components/app-header/AppHeader";
 import { COMPLETED, ACTIVE } from "../../store/constants/filterConstants";
 import { TodoList } from "../../components/todo-list/TodoList";
