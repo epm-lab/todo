@@ -2,10 +2,12 @@
     list-style-type: none;
     display: grid;
     grid-template-areas: "first second";
-    grid-template: auto / minmax(auto, 480px) 60px;
+    grid-template: auto / auto 60px;
     grid-column-gap: 10px;
+    justify-content: space-between;
     align-items: center;
-    width: 92%;
+    margin-left: 25px;
+    margin-right: 8px;
 }
 
 .todo-list-item_span {

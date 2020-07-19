@@ -58,9 +58,9 @@ const ToDoContainer = ({
     <>
       <AppHeader amountOfTasks={tasks.length} activeBtn={filter} onClick={onFilterClick} />
       <form className="form-add" onSubmit={handleSubmit(handleAddTask)}>
-        <div className="main">
+        <div className="main-input">
           <Field
-            className="main-input ant-input"
+            className="ant-input"
             name="toDoInput"
             component="input"
             type="text"
