@@ -19,6 +19,7 @@
 }
 
 .form-modal {
+    position: relative;
     display: grid;
     grid-template-areas: "area area2";
     grid-template: auto / auto 60px;

@@ -7,6 +7,7 @@ import { EditOutlined } from "@ant-design/icons";
 import { changeTask } from "../../store/actions";
 import { RootState } from "../../store/appState";
 import { Input } from "../../components/custom-input/CustomInput";
+import { MIN_LENGTH_2, MAX_LENGTH_25 } from "../../store/constants/validatorConstants";
 
 import "./ModalWindow.css";
 
@@ -55,17 +56,17 @@ const ModalWindowContainer = ({
       >
         <form className="form-modal" onSubmit={handleSubmit(handleOk)}>
           <Field
-            autoFocus={true}
             className="modal-input ant-input"
             name="modalWindowInput"
             component={Input}
             type="text"
             placeholder="Enter your new task here..."
+            validate={[MIN_LENGTH_2, MAX_LENGTH_25]}
           />
           <button
             className="ant-btn ant-btn-primary"
             type="submit"
-            disabled={pristine || submitting}
+            disabled={pristine}
           >
             Ок
           </button>
@@ -77,6 +78,7 @@ const ModalWindowContainer = ({
 
 const formCreator = reduxForm({
   form: "toDoWindow",
+  touchOnChange: true,
 });
 
 const connector = connect(

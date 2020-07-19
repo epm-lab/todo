@@ -12,7 +12,7 @@ import {
 import { AppHeader } from "../../components/app-header/AppHeader";
 import { COMPLETED, ACTIVE } from "../../store/constants/filterConstants";
 import { TodoList } from "../../components/todo-list/TodoList";
-import { minLengthCreator, maxLengthCreator } from "./../../utils/validators";
+import { MIN_LENGTH_2, MAX_LENGTH_25 } from "../../store/constants/validatorConstants";
 import { Input } from "./../../components/custom-input/CustomInput";
 
 import "antd/dist/antd.css";
@@ -20,9 +20,6 @@ import "./Todo.css";
 
 //React.Component<InjectedFormProps<IUser, IProps> & IProps>
 //:React.Component<CustomProps & InjectedFormProps<{}, CustomProps>>
-
-const minLength2 = minLengthCreator(2);
-const maxLength25 = maxLengthCreator(25);
 
 const ToDoContainer = ({
   handleSubmit,
@@ -78,7 +75,7 @@ const ToDoContainer = ({
             component={Input}
             type="text"
             placeholder="Enter your new task here..."
-            validate={[minLength2, maxLength25]}
+            validate={[MIN_LENGTH_2, MAX_LENGTH_25]}
           />
           <button
             id="btn-add"
