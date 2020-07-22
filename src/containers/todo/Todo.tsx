@@ -18,9 +18,6 @@ import { Input } from "./../../components/custom-input/CustomInput";
 import "antd/dist/antd.css";
 import "./Todo.css";
 
-//React.Component<InjectedFormProps<IUser, IProps> & IProps>
-//:React.Component<CustomProps & InjectedFormProps<{}, CustomProps>>
-
 const ToDoContainer = ({
   handleSubmit,
   pristine,
@@ -74,7 +71,6 @@ const ToDoContainer = ({
             name="toDoInput"
             component={Input}
             type="text"
-            val={{isModal: false}}
             placeholder="Enter your new task here..."
             validate={[MIN_LENGTH_2, MAX_LENGTH_25]}
           />
@@ -102,6 +98,8 @@ const ToDoContainer = ({
 const formCreator = reduxForm({
   form: "toDo",
   touchOnChange: true,
+  touchOnBlur: true,
+  destroyOnUnmount: true,
 });
 
 const connector = connect(

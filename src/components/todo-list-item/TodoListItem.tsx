@@ -28,7 +28,7 @@ export const TodoListItem = ({
             {text}
           </span>
         </label>
-        <ModalWindow id={id} text={text}/>
+        <ModalWindow id={id} text={text} />
       </span>
       <Tooltip title="Remove!" placement="left">
         <Button className="button-delete" onClick={() => onRemove(id)} >

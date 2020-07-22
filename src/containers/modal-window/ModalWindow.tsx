@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
 import { Modal, Button, Tooltip } from "antd";
 import { EditOutlined } from "@ant-design/icons";
@@ -11,28 +11,27 @@ import { MIN_LENGTH_2, MAX_LENGTH_25 } from "../../store/constants/validatorCons
 
 import "./ModalWindow.css";
 
-const ModalWindowContainer = ({
-  handleSubmit,
-  pristine,
-  onChange,
-  ownProps,
-}: any) => {
-  const { id, text } = ownProps;
+const ModalWindowContainer = (props: any) => {
+  const {handleSubmit, destroy, initializeModal, initialValues, form, pristine, onChange, ownProps} = props;
+  const { id } = ownProps;
 
   const [visible, setVisible] = useState(false);
 
   const showModal = (): void => {
     setVisible(true);
+    initializeModal(form, initialValues);
   };
 
   const handleOk = (values: any): void => {
     setVisible(false);
     onChange(id, values.modalWindowInput);
     values.modalWindowInput = "";
+    destroy("toDoWindow");
   };
 
   const handleCancel = (): void => {
     setVisible(false);
+    destroy("toDoWindow");
   };
 
   return (
@@ -60,7 +59,6 @@ const ModalWindowContainer = ({
             component= {Input}
             type="text"
             placeholder="Enter your new task here..."
-            val={{text, isModal: true}}
             validate={[MIN_LENGTH_2, MAX_LENGTH_25]}
           />
           <button
@@ -79,15 +77,20 @@ const ModalWindowContainer = ({
 const formCreator = reduxForm({
   form: "toDoWindow",
   touchOnChange: true,
+  touchOnBlur: true,
+  destroyOnUnmount: true,
+  enableReinitialize : true,
 });
 
 const connector = connect(
   (state: RootState, props: any) => ({
     tasks: state.tasks,
+    initialValues: {modalWindowInput: props.text},
     ownProps: props,
   }),
   (dispatch) => ({
     onChange: (id: number, value: any) => dispatch(changeTask(id, value)),
+    initializeModal: (formName: string, initialValues: object) => dispatch(initialize(formName, initialValues)),
   })
 );
 
