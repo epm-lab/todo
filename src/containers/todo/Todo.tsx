@@ -28,6 +28,8 @@ const ToDoContainer = ({
   onAddTask,
   onComplete,
   onRemove,
+  destroy,
+  form
 }: any): ReactElement => {
   const isTasksExist = tasks && tasks.length > 0;
 
@@ -39,7 +41,7 @@ const ToDoContainer = ({
         text: taskText,
         isCompleted: false,
       };
-      values.toDoInput = "";
+      destroy(form);
       onAddTask(newTask);
     }
   };

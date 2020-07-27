@@ -20,7 +20,7 @@ export const TodoListItem = ({
         <Checkbox
           id={`check-${id}`}
           onChange={() => onComplete(id)}
-          checked={isCompleted ? true : false}
+          checked={isCompleted}
           className="checkbox"
         />
         <label className="label-check" htmlFor={`check-${id}`}>

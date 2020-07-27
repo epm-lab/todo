@@ -25,13 +25,12 @@ const ModalWindowContainer = (props: any) => {
   const handleOk = (values: any): void => {
     setVisible(false);
     onChange(id, values.modalWindowInput);
-    values.modalWindowInput = "";
-    destroy("toDoWindow");
+    destroy(form);
   };
 
   const handleCancel = (): void => {
     setVisible(false);
-    destroy("toDoWindow");
+    destroy(form);
   };
 
   return (
