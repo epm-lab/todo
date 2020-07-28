@@ -1,20 +1,7 @@
-import { createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { InjectedFormProps } from 'redux-form';
+import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import { rootReducer } from './rootReducer';
-
-export interface Task {
-  id: number,
-  text: string,
-  isCompleted: boolean,
-}
-
-export interface RootState {
-  tasks: Task[],
-  filter: string,
-  form: InjectedFormProps,
-}
+import { rootReducer } from "./rootReducer";
 
 const AppState = createStore(rootReducer, composeWithDevTools());
 

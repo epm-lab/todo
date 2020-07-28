@@ -5,14 +5,26 @@ import { Modal, Button, Tooltip } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 
 import { changeTask } from "../../store/actions";
-import { RootState } from "../../store/appState";
+import { RootState } from "./../../utils/interfaces";
 import { Input } from "../../components/custom-input/CustomInput";
-import { MIN_LENGTH_2, MAX_LENGTH_25 } from "../../store/constants/validatorConstants";
+import {
+  MIN_LENGTH_2,
+  MAX_LENGTH_25,
+} from "../../store/constants/validatorConstants";
 
 import "./ModalWindow.css";
 
 const ModalWindowContainer = (props: any) => {
-  const {handleSubmit, destroy, initializeModal, initialValues, form, pristine, onChange, ownProps} = props;
+  const {
+    handleSubmit,
+    destroy,
+    initializeModal,
+    initialValues,
+    form,
+    pristine,
+    onChange,
+    ownProps,
+  } = props;
   const { id } = ownProps;
 
   const [visible, setVisible] = useState(false);
@@ -55,7 +67,7 @@ const ModalWindowContainer = (props: any) => {
           <Field
             className="modal-input ant-input"
             name="modalWindowInput"
-            component= {Input}
+            component={Input}
             type="text"
             placeholder="Enter your new task here..."
             validate={[MIN_LENGTH_2, MAX_LENGTH_25]}
@@ -78,18 +90,19 @@ const formCreator = reduxForm({
   touchOnChange: true,
   touchOnBlur: true,
   destroyOnUnmount: true,
-  enableReinitialize : true,
+  enableReinitialize: true,
 });
 
 const connector = connect(
   (state: RootState, props: any) => ({
     tasks: state.tasks,
-    initialValues: {modalWindowInput: props.text},
+    initialValues: { modalWindowInput: props.text },
     ownProps: props,
   }),
   (dispatch) => ({
     onChange: (id: number, value: any) => dispatch(changeTask(id, value)),
-    initializeModal: (formName: string, initialValues: object) => dispatch(initialize(formName, initialValues)),
+    initializeModal: (formName: string, initialValues: object) =>
+      dispatch(initialize(formName, initialValues)),
   })
 );
 

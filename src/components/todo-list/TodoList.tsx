@@ -1,6 +1,7 @@
 import React from "react";
 
 import { TodoListItem } from "../todo-list-item/TodoListItem";
+import { TodoTypes } from "./../../utils/interfaces";
 
 import "./TodoList.css";
 
@@ -20,15 +21,3 @@ export const TodoList = ({ tasksList, onComplete, onRemove }: TodoTypes) => {
     </ul>
   );
 };
-
-interface ItemTypes {
-  id: number;
-  text: string;
-  isCompleted: boolean;
-}
-
-interface TodoTypes {
-  tasksList: Array<ItemTypes>;
-  onComplete: () => {};
-  onRemove: () => {};
-}

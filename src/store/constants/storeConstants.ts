@@ -1,5 +1,5 @@
 import { ALL } from "./filterConstants";
-import { Task } from "../appState";
+import { Task } from "./../../utils/interfaces";
 
 export const BASE_FILTER: string = ALL;
 export const INITIAL_TASKS: Task[] = [

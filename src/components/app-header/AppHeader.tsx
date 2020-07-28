@@ -2,19 +2,24 @@ import React from "react";
 import { PageHeader, Button } from "antd";
 
 import { ALL, ACTIVE, COMPLETED } from "../../store/constants/filterConstants";
+import { AppHeaderTypes } from "./../../utils/interfaces";
 
 import "./AppHeader.css";
 import "antd/dist/antd.css";
 
-export const AppHeader = ({ amountOfTasks, activeBtn, onClick }: AppHeaderTypes) => {
+export const AppHeader = ({
+  amountOfTasks,
+  activeBtn,
+  onClick,
+}: AppHeaderTypes) => {
   return (
     <PageHeader
       className="header"
       title="ToDo list"
       subTitle={
-        amountOfTasks > 1 ? 
-        `You have ${amountOfTasks} tasks` : 
-        `You have ${amountOfTasks} task`
+        amountOfTasks > 1
+          ? `You have ${amountOfTasks} tasks`
+          : `You have ${amountOfTasks} task`
       }
       extra={[
         <Button
@@ -45,10 +50,3 @@ export const AppHeader = ({ amountOfTasks, activeBtn, onClick }: AppHeaderTypes)
     />
   );
 };
-
-interface AppHeaderTypes {
-  amountOfTasks: number;
-  activeBtn: string;
-  onClick: (filterValue: string) => {};
-}
-

@@ -3,6 +3,7 @@ import { Checkbox, Button, Tooltip } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 
 import { ModalWindow } from "../../containers/modal-window/ModalWindow";
+import { TodoListItemTypes } from "./../../utils/interfaces";
 
 import "antd/dist/antd.css";
 import "./TodoListItem.css";
@@ -31,18 +32,10 @@ export const TodoListItem = ({
         <ModalWindow id={id} text={text} />
       </span>
       <Tooltip title="Remove!" placement="left">
-        <Button className="button-delete" onClick={() => onRemove(id)} >
+        <Button className="button-delete" onClick={() => onRemove(id)}>
           <DeleteOutlined />
         </Button>
       </Tooltip>
     </li>
   );
 };
-
-interface TodoListItemTypes {
-  id: number;
-  text: string;
-  isCompleted: boolean;
-  onRemove: (id: number) => {};
-  onComplete: (id: number) => {};
-}

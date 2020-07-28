@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 
-import { RootState, Task } from "../../store/appState";
+import { RootState, Task } from "./../../utils/interfaces";
 import {
   addTask,
   changeFilter,
@@ -12,7 +12,10 @@ import {
 import { AppHeader } from "../../components/app-header/AppHeader";
 import { COMPLETED, ACTIVE } from "../../store/constants/filterConstants";
 import { TodoList } from "../../components/todo-list/TodoList";
-import { MIN_LENGTH_2, MAX_LENGTH_25 } from "../../store/constants/validatorConstants";
+import {
+  MIN_LENGTH_2,
+  MAX_LENGTH_25,
+} from "../../store/constants/validatorConstants";
 import { Input } from "./../../components/custom-input/CustomInput";
 
 import "antd/dist/antd.css";
@@ -29,11 +32,11 @@ const ToDoContainer = ({
   onComplete,
   onRemove,
   destroy,
-  form
+  form,
 }: any): ReactElement => {
   const isTasksExist = tasks && tasks.length > 0;
 
-  const handleAddTask = ( values: any) => {
+  const handleAddTask = (values: any) => {
     const taskText: string = values.toDoInput;
     if (taskText && taskText.length > 0) {
       const newTask: Task = {
