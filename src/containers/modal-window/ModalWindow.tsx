@@ -36,7 +36,6 @@ const ModalWindowContainer: React.FC<InjectedFormProps<Record<string, {}>> & Des
   };
 
   const handleOk = (values: BaseModalProps): void => {
-    console.log(values);
     setVisible(false);
     onChange(id, values.modalWindowInput);
     destroy(form);

@@ -16,11 +16,7 @@ export const AppHeader = ({
     <PageHeader
       className="header"
       title="ToDo list"
-      subTitle={
-        amountOfTasks > 1
-          ? `You have ${amountOfTasks} tasks`
-          : `You have ${amountOfTasks} task`
-      }
+      subTitle={`You have ${amountOfTasks} ${amountOfTasks > 1? 'tasks': 'task'}`}
       extra={[
         <Button
           className="button-filter"
