@@ -15,22 +15,15 @@ export interface TodoListItemTypes {
   onComplete: (id: number) => {};
 }
 
-export interface ItemTypes {
-  id: number;
-  text: string;
-  isCompleted: boolean;
-}
-
-export interface TodoTypes {
-  tasksList: Array<ItemTypes>;
-  onComplete: () => {};
-  onRemove: () => {};
-}
-
 export interface Task {
   id: number;
   text: string;
   isCompleted: boolean;
+}
+export interface TodoTypes {
+  tasksList: Array<Task>;
+  onComplete: () => {};
+  onRemove: () => {};
 }
 
 export interface RootState {
@@ -65,4 +58,12 @@ export interface ChangeTaskType {
 export interface ChangeFilterType {
   type: typeof actionTypes.CHANGE_FILTER;
   activeFilter: string;
+}
+
+export interface BaseModalProps {
+  [name: string]: any;
+}
+
+export interface DestroyForm {
+  destroy: (formName: string) => void;
 }

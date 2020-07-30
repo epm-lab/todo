@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
 import { connect } from "react-redux";
-import { reduxForm, Field } from "redux-form";
+import { reduxForm, Field, InjectedFormProps } from "redux-form";
 
-import { RootState, Task } from "./../../utils/interfaces";
+import { RootState, Task, BaseModalProps, DestroyForm } from "./../../utils/interfaces";
 import {
   addTask,
   changeFilter,
@@ -21,7 +21,9 @@ import { Input } from "./../../components/custom-input/CustomInput";
 import "antd/dist/antd.css";
 import "./Todo.css";
 
-const ToDoContainer = ({
+
+
+const ToDoContainer: React.FC<InjectedFormProps<Record<string, {}>> & DestroyForm & BaseModalProps> = ({
   handleSubmit,
   pristine,
   submitting,
@@ -33,10 +35,11 @@ const ToDoContainer = ({
   onRemove,
   destroy,
   form,
-}: any): ReactElement => {
+}): ReactElement => {
+
   const isTasksExist = tasks && tasks.length > 0;
 
-  const handleAddTask = (values: any) => {
+  const handleAddTask = (values: BaseModalProps) => {
     const taskText: string = values.toDoInput;
     if (taskText && taskText.length > 0) {
       const newTask: Task = {

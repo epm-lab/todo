@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Field, reduxForm, initialize } from "redux-form";
+import React, { ReactElement, useState } from "react";
+import { Field, reduxForm, initialize, InjectedFormProps } from "redux-form";
 import { connect } from "react-redux";
 import { Modal, Button, Tooltip } from "antd";
 import { EditOutlined } from "@ant-design/icons";
 
 import { changeTask } from "../../store/actions";
-import { RootState } from "./../../utils/interfaces";
+import { RootState, BaseModalProps, DestroyForm } from "./../../utils/interfaces";
 import { Input } from "../../components/custom-input/CustomInput";
 import {
   MIN_LENGTH_2,
@@ -14,8 +14,8 @@ import {
 
 import "./ModalWindow.css";
 
-const ModalWindowContainer = (props: any) => {
-  const {
+const ModalWindowContainer: React.FC<InjectedFormProps<Record<string, {}>> & DestroyForm & BaseModalProps> = (
+  {
     handleSubmit,
     destroy,
     initializeModal,
@@ -24,7 +24,8 @@ const ModalWindowContainer = (props: any) => {
     pristine,
     onChange,
     ownProps,
-  } = props;
+  }): ReactElement => {
+  
   const { id } = ownProps;
 
   const [visible, setVisible] = useState(false);
@@ -34,7 +35,8 @@ const ModalWindowContainer = (props: any) => {
     initializeModal(form, initialValues);
   };
 
-  const handleOk = (values: any): void => {
+  const handleOk = (values: BaseModalProps): void => {
+    console.log(values);
     setVisible(false);
     onChange(id, values.modalWindowInput);
     destroy(form);
@@ -94,14 +96,14 @@ const formCreator = reduxForm({
 });
 
 const connector = connect(
-  (state: RootState, props: any) => ({
+  (state: RootState, props: BaseModalProps) => ({
     tasks: state.tasks,
     initialValues: { modalWindowInput: props.text },
     ownProps: props,
   }),
   (dispatch) => ({
-    onChange: (id: number, value: any) => dispatch(changeTask(id, value)),
-    initializeModal: (formName: string, initialValues: object) =>
+    onChange: (id:number, value:any) => dispatch(changeTask(id, value)),
+    initializeModal: (formName: string, initialValues: BaseModalProps) =>
       dispatch(initialize(formName, initialValues)),
   })
 );
